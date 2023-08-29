@@ -29,7 +29,7 @@ int main()
     cin>>join_year;
     cout<<"\nEnter the marks in 5 subjects: \n";
     cin>>m1>>m2>>m3>>m4>>m5;
-    sum=m1+m2+3+4+m5;
+    sum=m1+m2+m3+m4+m5;
     avg=sum/5;
     if(avg>=90)
         grade='A';
