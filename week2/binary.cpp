@@ -1,24 +1,27 @@
 #include <iostream>
-#include <string>
 using namespace std;
 int main() {
     int decimalNumber;
     cout << "Enter a decimal number: ";
     cin >> decimalNumber;
 
-    string binaryString = "";
+    int a[32],i,n=decimalNumber;
     
     if (decimalNumber == 0) {
-        binaryString = "0";
-    } else {
-        while (decimalNumber > 0) {
-            int remainder = decimalNumber % 2;
-            binaryString = char('0' + remainder) + binaryString; // Convert remainder to character
-            decimalNumber /= 2;
-        }
+        cout<<"0";
+    } 
+    for(i=0;n>0;i++)
+    {
+        a[i]=n%2;
+        n/=2;
+    }
+    cout << "Binary representation: "<< endl;
+    for(i=i-1;i>=0;i--)
+    {
+        cout<<a[i];
     }
 
-    cout << "Binary representation: " << binaryString << endl;
+    
 
     return 0;
 }
