@@ -13,22 +13,14 @@ class Cricket {
 
 public:
     Cricket() {
-        // Default constructor
-    }
-
-    Cricket(char _code[], char _name[], int _no_of_matches, int _total_runs, int _no_of_not_outs) {
-        strcpy(code, _code);
-        strcpy(name, _name);
-        no_of_matches = _no_of_matches;
-        total_runs = _total_runs;
-        no_of_not_outs = _no_of_not_outs;
+        get_details();
     }
 
     void average() {
-        cout << "Average of " << name << " = " << static_cast<double>(total_runs) / no_of_matches << endl;
+        cout << "Average of " << name << " = " <<(double) (total_runs) / no_of_matches << endl;
     }
 
-    static double average(Cricket players[], int n) {
+    double average(Cricket players[], int n) {
         int total = 0;
         for (int i = 0; i < n; i++) {
             total += players[i].total_runs;
@@ -58,20 +50,16 @@ public:
 };
 
 bool sort_totalruns(Cricket &c1, Cricket &c2) {
-    return c1.total_runs > c2.total_runs; // Sorting in descending order
+    return c1.total_runs < c2.total_runs;
 }
 
 int main() {
-    Cricket players[10];
+    
     int ch, n;
 
     cout << "Enter the number of players (up to 10): ";
     cin >> n;
-
-    for (int i = 0; i < n; i++) {
-        cout << "\nEnter details for Player " << i + 1 << ":" << endl;
-        players[i].get_details();
-    }
+    Cricket players[n];
 
     while (ch != 4) {
         cout << "\nMenu:" << endl;
@@ -95,7 +83,7 @@ int main() {
                 break;
 
             case 2:
-                cout << "Average runs of all players = " << Cricket::average(players, n) << endl;
+                cout << "Average runs of all players = " << players[0].average(players, n) << endl;
                 break;
 
             case 3:
