@@ -12,6 +12,7 @@ class Bank{
         float bal;
 
         public: Bank(){
+                        get_data();
                         bal=500;
                 }
                 void get_data(void){
@@ -27,7 +28,7 @@ class Bank{
                                         case 'F':strcpy(type,"Fixed");
                                                 break;
                                         case 'C':strcpy(type,"Current");
-   break;
+                                                break;
                                         default:cout<<"Invalid Choice\n";
                                                 continue;
                                 }
@@ -62,12 +63,44 @@ void withdraw(Bank &b){
 
 int main(){
         Bank b1,b2;
-        b1.get_data();
-        b1.deposit();
-        withdraw(b1);
-        b1.display();
-        b2.get_data();
-        b2.deposit();
-        withdraw(b2);
-        b2.display();
+        int ch1,ch2;
+        
+        while (ch1!=4)
+        {
+                cout << "\nOptions:\n1. Deposit\n2. Withdraw\n3. Display Account Details\n4. Exit\n";
+                cout << "Enter your choice: ";
+                cin>>ch1;
+                switch(ch1){
+                        case 1: cout<<"Enter account to  deposit(1 or 2)";
+                                cin>>ch2;
+                                if (ch2 == 1)
+                                        b1.deposit();
+                                else if (ch2 == 2)
+                                        b2.deposit();
+                                else
+                                        cout << "Invalid account choice.\n";
+                                break;
+                        case 2:         
+                                cout << "Choose an account (1 or 2): ";
+                                cin >> ch2;
+                                if (ch2 == 1)
+                                        withdraw(b1);
+                                else if (ch2 == 2)
+                                        withdraw(b2);
+                                else
+                                        cout << "Invalid account choice.\n";
+                                break;
+                        case 3:
+                                cout << "Account Details:\n";
+                                cout << "Account 1:\n";
+                                b1.display();
+                                cout << "\nAccount 2:\n";
+                                b2.display();
+                                break;
+                        case 4: cout<<"\nExiting Program"<<endl;
+                                return 0;
+                        default: cout<<"\nInvalid choice\n";
+                }
+        }
+        return 0;
 }

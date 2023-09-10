@@ -35,12 +35,16 @@ void display(emp &n){
     cout << "\nNet Salary: " << n.net_sal << "\n"<<endl;
 }
 int main(){
-        system("clear");
+        
         int n=0,ch;
         emp e[25];
         cout<<"Enter number of employees:";
         cin>>n;
-         cout<<"\nRead the emplyees:";
+        if(n<1){
+                cout<<"Exiting program";
+                return 0;
+        }
+        cout<<"\nRead the emplyees:";
                         for(int i=0;i<n;i++)
                         {
                                 get_data(e[i]);
