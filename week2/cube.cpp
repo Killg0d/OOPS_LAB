@@ -1,12 +1,14 @@
 #include <iostream>
+#include<cmath>
 using namespace std;
 
 int main(){
     int num;
     cout<<"Enter a number:";
     cin>>num;
-    for(int i=1;i * i * i <=num;i++)
-        if ( i * i * i == num ){
+    int cubeRoot=cbrt(abs(num));
+    
+        if( cubeRoot * cubeRoot * cubeRoot == abs(num) ){
             cout<<"The number is a perfect cube"<<endl;
             return 0;
         }
