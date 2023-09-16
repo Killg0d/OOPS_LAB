@@ -37,8 +37,17 @@ class Bank{
                 }
                 void deposit(void){
                         float amt;
-                        cout<<"\nEnter the amount to be deposited:";
-                        cin>>amt;
+                        do{
+                                
+                                cout<<"\nEnter the amount to be deposited:";
+                                cin>>amt;
+                                if(amt<0){
+                                        cout<<"Amount must be greater than 0"<<endl;
+                                }
+                                else{
+                                        break;
+                                }
+                        }while(true);
                         bal+=amt;
                 }
                 friend void withdraw(Bank &);
@@ -63,7 +72,7 @@ void withdraw(Bank &b){
 
 int main(){
         Bank b1,b2;
-        int ch1,ch2;
+        int ch1,accno;
         
         while (ch1!=4)
         {
@@ -72,20 +81,20 @@ int main(){
                 cin>>ch1;
                 switch(ch1){
                         case 1: cout<<"Enter account to  deposit(1 or 2)";
-                                cin>>ch2;
-                                if (ch2 == 1)
+                                cin>>accno;
+                                if (accno == 1)
                                         b1.deposit();
-                                else if (ch2 == 2)
+                                else if (accno == 2)
                                         b2.deposit();
                                 else
                                         cout << "Invalid account choice.\n";
                                 break;
                         case 2:         
                                 cout << "Choose an account (1 or 2): ";
-                                cin >> ch2;
-                                if (ch2 == 1)
+                                cin >> accno;
+                                if (accno == 1)
                                         withdraw(b1);
-                                else if (ch2 == 2)
+                                else if (accno == 2)
                                         withdraw(b2);
                                 else
                                         cout << "Invalid account choice.\n";
