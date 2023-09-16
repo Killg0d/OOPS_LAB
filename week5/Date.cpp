@@ -93,9 +93,11 @@ void Date::get_Date(){
 }
 bool Date:: validate_date(){
     if(year<0 || year>3000){
+        cout<<"Year out of range."<<endl;
         return false;
     }
     if(month<1||month>12){
+        cout<<"Month out of range."<<endl;
         return false;
     }
     int max_month_days[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
@@ -104,6 +106,7 @@ bool Date:: validate_date(){
         max_month_days[2]=29;
     }
     if(max_month_days[month]<day){
+        cout<<"Day out of range."<<endl;
         return false;
     }
     return true;
