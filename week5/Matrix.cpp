@@ -8,47 +8,47 @@ by overloading + and - operators. */
 #include<iostream>
 using namespace std;
 class Matrix{
-int arr[10][10],m,n;
-public:Matrix():m(0),n(0){}
+int arr[10][10],rows,cols;
+public:Matrix():rows(0),cols(0){}
 Matrix(int x,int y){
-                m=x;
-                n=y;
+                rows=x;
+                cols=y;
                 }
                 void get_details(void){
-                        cout<<"Enter the no of rows:";cin>>m;
-                        cout<<"Enter the no of cols:";cin>>n;
+                        cout<<"Enter the no of rows:";cin>>rows;
+                        cout<<"Enter the no of cols:";cin>>cols;
                         cout<<"Enter the elements:";
-                        for(int i=0;i<m;i++)
-                                for(int j=0;j<n;j++)
+                        for(int i=0;i<rows;i++)
+                                for(int j=0;j<cols;j++)
                                         cin>>arr[i][j];
                 }
                 bool operator==(Matrix a) const{
-                    if(m==a.m && n==a.n)
+                    if(rows==a.rows && cols==a.cols)
                         return true;
                     else
                         return false;
                     
                 }
                 Matrix operator-(Matrix m2) const{
-                        Matrix c(m,n);
-                        for(int i=0;i<m;i++){
-                                for(int j=0;j<n;j++)
+                        Matrix c(rows,cols);
+                        for(int i=0;i<rows;i++){
+                                for(int j=0;j<cols;j++)
                                         c.arr[i][j]=arr[i][j]-m2.arr[i][j];
                         }
                         return c;
                 }
                 Matrix operator+(Matrix m2) const{
-                        Matrix c(m,n);
-                        for(int i=0;i<m;i++){
-                                for(int j=0;j<n;j++)
+                        Matrix c(rows,cols);
+                        for(int i=0;i<rows;i++){
+                                for(int j=0;j<cols;j++)
                                         c.arr[i][j]=arr[i][j]+m2.arr[i][j];
                         }
                         return c;
                 }
                 void display(){
                         cout<<"Elements are:"<<endl;
-                        for(int i=0;i<m;i++){
-                                for(int j=0;j<n;j++)
+                        for(int i=0;i<rows;i++){
+                                for(int j=0;j<cols;j++)
                                         cout<<arr[i][j]<<"\t";
                         cout<<endl;
                         }
