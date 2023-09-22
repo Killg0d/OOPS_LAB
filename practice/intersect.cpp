@@ -22,8 +22,17 @@ class intersect{
         for(int i=0;i<size;i++)
         for(int j=0;j<ob.size;j++){
       
-            if(a[i]==ob.a[j]){
-            temp.a[temp.size++]=a[i];
+            if(a[i]==ob.a[j])
+            {   
+                bool isDuplicate=false;
+                for(int k=0;k<temp.size;k++){
+                    if(temp.a[k]==a[i]){
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if(!isDuplicate)
+                    temp.a[temp.size++]=a[i];
             
             break;
             }
