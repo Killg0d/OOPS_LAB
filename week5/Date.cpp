@@ -1,3 +1,6 @@
+/*Write a C++ program to create a class called Date, which contains integer members
+to represent day, month, and year. The overload ++ operator to increment the value
+of Date object by one. */
 #include<iostream>
 using namespace std;
 
@@ -32,37 +35,37 @@ void Date::operator++(){
             if(month==2)
             {   
                 if(isLeap()){
-                    if(day>=29){
+                    if(day>29){
                         month++;
                         day=1;
                     }
                 }
-                else if(day>=28)
+                else if(day>28)
                 {
                     month++;
                     day=1;        
                 }
             }
-            else if(day>=30)
+            else if(day>30)
             {
                 month++;
                 day=1;
             }
         }
-        else if(day>=31)
+        else if(day>31)
             {
                 month++;
                 day=1;
             }
     }
     else if (month%2==0)
-    { if(day>=30)
+    { if(day>30)
         {
             month++;
             day=1;
         }
     }
-    else if(day>=31){
+    else if(day>31){
         month++;
         day=1;
     }
