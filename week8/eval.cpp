@@ -132,7 +132,7 @@ public:
     void showdata()
     {
         calc();
-        if (get_fails() || Sports::get_total() <= 35 || total <= 35)
+        if (get_fails() || Sports::get_total() <= 35 || total/4 <= 35)
             grade = f;
         else if (total / 4 < 60)
             grade = e;
