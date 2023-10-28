@@ -1,12 +1,14 @@
 // A new scheme of evaluation of student’s performance is formulated that gives
 // weightage for sports. The relationships of different classes and derived classes are
 // given below.
-// Student
-//  Exam Sports
-//  Result
+//          >Student<
+//      ^Exam   ^Sports
+//          ^Result^
 // By properly assuming the data members & member functions for each class, write
 // a C++ program to model the above relationship such that members of the student
 // class are not inherited twice.
+//Tarun
+//230970005
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -16,8 +18,11 @@ class Student
     char name[20];
 
 public:
-    bool dataReceived;
-    Student() : dataReceived(false) {}
+    //Two variables declared if an instance of the child class is invoked instead of grandchild 
+    //then it must also call the functions to getvariables of parent. 
+    bool dataReceived;//Checks if the getdata() is already called
+    bool dataDisplayed;//Checks if showdata()is already called
+    Student() : dataReceived(false),dataDisplayed(false) {}
     Student(int r, char n[]) : rollno(r) { strcpy(name, n); }
     void getdata()
     {
@@ -31,8 +36,11 @@ public:
         }
     }
     void showdata()
-    {
+    {   
+        if(!dataDisplayed){
         cout << "\nRoll No: " << rollno << "\nName: " << name;
+        dataDisplayed=true;
+        }
     }
 };
 class Exam : public virtual Student
@@ -63,7 +71,10 @@ public:
     }
     void showdata()
     {
+        Student::showdata();
+        if(dataDisplayed){
         cout << "\nMark 1:" << mark1 << "\nMark 2:" << mark2 << "\nMark 3:" << mark3;
+        }
     }
 };
 class Sports : virtual public Student
@@ -88,6 +99,7 @@ public:
     }
     void showdata()
     {
+        if(dataDisplayed)
         cout << "\nSports Marks:" << spmark;
     }
 };
@@ -132,7 +144,6 @@ public:
             grade = b;
         else
             grade = a;
-        Student::showdata();
         Exam::showdata();
         Sports::showdata();
         cout << "\nResult:\nTotal:" << total << "\nAverage:" << (total / 4) << endl
