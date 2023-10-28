@@ -22,6 +22,10 @@ class Employee{
         cout<<"\nEnter the name:";
         cin>>name;
        }
+       void updatename(){
+                cout<<"\nEnter New name:";
+                cin>>name;
+       }
        void showdata(){
         cout<<"\nID = "<<id;
         cout<<"\nNAME = "<<name;
@@ -33,6 +37,10 @@ class Account:public virtual Employee{
                 Account(int id,char name[],int p):Employee(id,name),pay(p){}
                 void getdata(){
                         cout<<"\nEnter the basic pay:";
+                        cin>>pay;
+                }
+                void updatepay(){
+                        cout<<"\nEnter New pay:";
                         cin>>pay;
                 }
                 void showdata(){
@@ -48,6 +56,10 @@ class Admin:public virtual Employee{
                         cout<<"\nEnter the experience:";
                         cin>>exp;
                 }
+                void updateexperience(){
+                        cout<<"\nEnter new Experience:";
+                        cin>>exp;
+                        }
                 void showdata(){
                         cout<<"\nExperience:"<<exp;
                 }
@@ -67,7 +79,7 @@ class Master: public Admin,public Account{
 };
 int main(){
         Master m;
-        int ch;
+        int ch,ch2;
         while(ch!=4){
                 cout<<"\n\n1.Create\n2.Update\n3.Display\n4.Exit\nEnter your choice:";
                 cin>>ch;
@@ -75,7 +87,12 @@ int main(){
                 {
                         case 1:m.getdata();
                                break;
-                        case 2:m.getdata();
+                        case 2: cout<<"\n1.Name\n2.Pay\n3.Exp\nEnter your choice:";
+                                cin>>ch2;
+                                if (ch2==1)m.updatename();
+                                else if(ch2==2)m.updatepay();
+                                else if(ch2==3)m.updateexperience();
+                                else cout<<"\nInvalid Choice\n";
                                break;
                         case 3:m.showdata();
                                break;
