@@ -16,14 +16,19 @@ class Student
     char name[20];
 
 public:
-    Student() {}
+    bool dataReceived;
+    Student() : dataReceived(false) {}
     Student(int r, char n[]) : rollno(r) { strcpy(name, n); }
     void getdata()
     {
-        cout << "\nEnter the rollno:";
-        cin >> rollno;
-        cout << "\nEnter the name:";
-        cin >> name;
+        if (!dataReceived)
+        {
+            cout << "\nEnter the rollno:";
+            cin >> rollno;
+            cout << "\nEnter the name:";
+            cin >> name;
+            dataReceived = true;
+        }
     }
     void showdata()
     {
@@ -42,8 +47,11 @@ public:
     Exam(int rno, char n[], int m1, int m2, int m3) : Student(rno, n), mark1(m1), mark2(m2), mark3(m3) {}
     void getdata()
     {
-        cout << "\nEnter the 3 marks:";
-        cin >> mark1 >> mark2 >> mark3;
+        Student::getdata();
+        if (dataReceived) {
+            cout << "\nEnter the 3 marks:";
+            cin >> mark1 >> mark2 >> mark3;
+        }
     }
     bool get_fails()
     {
@@ -67,8 +75,12 @@ public:
     Sports(int rno, char name[], int sm) : Student(rno, name), spmark(sm) {}
     void getdata()
     {
-        cout << "\nEnter the sports marks:";
-        cin >> spmark;
+        Student::getdata();
+        if (dataReceived)
+        {
+            cout << "\nEnter the sports marks:";
+            cin >> spmark;
+        }
     }
     int get_total()
     {
@@ -102,7 +114,6 @@ public:
     }
     void getdata()
     {
-        Student::getdata();
         Exam::getdata();
         Sports::getdata();
     }
@@ -111,21 +122,21 @@ public:
         calc();
         if (get_fails() || Sports::get_total() <= 35 || total <= 35)
             grade = f;
-        else if (total/4 < 60)
+        else if (total / 4 < 60)
             grade = e;
-        else if (total/4 < 70)
+        else if (total / 4 < 70)
             grade = d;
-        else if (total/4 < 80)
+        else if (total / 4 < 80)
             grade = c;
-        else if (total/4 < 90)
+        else if (total / 4 < 90)
             grade = b;
         else
             grade = a;
         Student::showdata();
         Exam::showdata();
         Sports::showdata();
-        cout << "\nResult:\nTotal:" << total << "\nAverage:" << (total / 4) << endl<<
-        "Grade:"<<static_cast<char>(grade);
+        cout << "\nResult:\nTotal:" << total << "\nAverage:" << (total / 4) << endl
+             << "Grade:" << static_cast<char>(grade);
     }
 };
 int main()
