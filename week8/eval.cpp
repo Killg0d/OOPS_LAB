@@ -152,6 +152,7 @@ public:
 };
 int main()
 {
+    
     Result r;
     r.getdata();
     r.showdata();

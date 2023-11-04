@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Tarun/Desktop/oopslab/practice",
-      "program": "c:/Users/Tarun/Desktop/oopslab/practice/build/Debug/outDebug",
+      "cwd": "c:/Users/Tarun/Desktop/oopslab/week9",
+      "program": "c:/Users/Tarun/Desktop/oopslab/week9/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
