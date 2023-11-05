@@ -68,7 +68,7 @@ int choice;
         cout << "\nMenu\n";
         cout << "1. Count type of char\n";
         cout << "2. Display content\n";
-        cout << "4. Exit\n";
+        cout << "3. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
