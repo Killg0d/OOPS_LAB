@@ -10,64 +10,78 @@
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
 
-void createFile(string fileName){
+void createFile(string fileName)
+{
     string fileString;
-    ofstream outFile(fileName);//Create file with username
+    ofstream outFile(fileName); // Create file with username
     cout << "Enter some text into the file: ";
-    cin.ignore(); // Clear the newline left in the buffer
-    getline(cin, fileString);//gets from keyboard stores in string
-    outFile << fileString;//writes it to the file
-    outFile.close();//close the file so that it will print it into file
+    cin.ignore();             // Clear the newline left in the buffer
+    getline(cin, fileString); // gets from keyboard stores in string
+    outFile << fileString;    // writes it to the file
+    outFile.close();          // close the file so that it will print it into file
 }
 
-void convertCase(string fileName) {
-    ifstream inFile(fileName);//create a obj pointing to file
-    ofstream outFile("temp.txt");//Creates error if same file opened in read and write mode
+void convertCase(string fileName)
+{
+    ifstream inFile(fileName);    // create a obj pointing to file
+    ofstream outFile("temp.txt"); // Creates error if same file opened in read and write mode
     char ch;
-    cout<<"case conversion ongoing";
-    while (inFile.get(ch)) {//get method retrieves one char at a time
-        if (islower(ch)) {
-            
+    cout << "case conversion ongoing";
+    while (inFile.get(ch))
+    { // get method retrieves one char at a time
+        if (islower(ch))
+        {
+
             ch = toupper(ch);
-            cout<<ch;
-            outFile<<ch;
-        } else if (isupper(ch)) {
-            ch = tolower(ch);
-            cout<<ch;
-            outFile<<ch;
+            cout << ch;
+            outFile << ch;
         }
-        
+        else if (isupper(ch))
+        {
+            ch = tolower(ch);
+            cout << ch;
+            outFile << ch;
+        }
+        else
+        {
+            cout << ch;
+            outFile << ch;
+        }
     }
 
     inFile.close();
     outFile.close();
-    cout<<fileName.c_str();
+    cout << fileName.c_str();
     remove(fileName.c_str());
-    
+
     rename("temp.txt", fileName.c_str());
 }
 
-void displayContent(string fileName) {
+void displayContent(string fileName)
+{
     ifstream inFile(fileName);
     char ch;
 
-    while (inFile.get(ch)) {
+    while (inFile.get(ch))
+    {
         cout << ch;
     }
 
     inFile.close();
 }
 
-int countCharA(string fileName) {
+int countCharA(string fileName)
+{
     ifstream inFile(fileName);
     char ch;
     int count = 0;
 
-    while (inFile.get(ch)) {
-        if (tolower(ch) == 'a') {
+    while (inFile.get(ch))
+    {
+        if (tolower(ch) == 'a')
+        {
             count++;
         }
     }
@@ -77,14 +91,16 @@ int countCharA(string fileName) {
     return count;
 }
 
-int main() {
+int main()
+{
     int choice;
     string fileName;
 
     cout << "Enter the file name: ";
     cin >> fileName;
     createFile(fileName);
-    do {
+    do
+    {
         cout << "\nMenu\n";
         cout << "1. Convert case\n";
         cout << "2. Display content\n";
@@ -93,23 +109,24 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch (choice) {
-            case 1:
-                convertCase(fileName);
-                cout << "Case conversion done.\n";
-                break;
-            case 2:
-                cout << "\nFile content:\n";
-                displayContent(fileName);
-                break;
-            case 3:
-                cout << "\nNumber of 'a' occurrences: " << countCharA(fileName) << endl;
-                break;
-            case 4:
-                cout << "Exiting the program.\n";
-                break;
-            default:
-                cout << "Invalid choice. Please try again.\n";
+        switch (choice)
+        {
+        case 1:
+            convertCase(fileName);
+            cout << "Case conversion done.\n";
+            break;
+        case 2:
+            cout << "\nFile content:\n";
+            displayContent(fileName);
+            break;
+        case 3:
+            cout << "\nNumber of 'a' occurrences: " << countCharA(fileName) << endl;
+            break;
+        case 4:
+            cout << "Exiting the program.\n";
+            break;
+        default:
+            cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 4);
 
