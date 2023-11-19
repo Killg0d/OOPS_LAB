@@ -31,7 +31,10 @@ int main(){
     Employee e1;
     e1.getdata();
     ofstream outfile("temp.txt");
-    outfile.write(reinterpret_cast<char*>(&e1), sizeof(e1));
+    outfile<<"hello";
+    cout<<outfile.tellp();
+    outfile.seekp(ios::cur);
+    o
 
     return 0;
 }
