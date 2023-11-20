@@ -26,6 +26,7 @@ ostream &operator<<(ostream &out, Student &s)
     out << "Email: " << s.email << endl;
     return out;
 }
+//This method will rewrite files each time sorting command is given
 void sortcontent()
 {
     fstream file("email.txt", ios::in);//open file in in mode
@@ -87,10 +88,10 @@ int main()
         switch (ch)
         {
         case 1:
-            s = new Student();//create an object
-            cin >> *s;
-            s->storefile();
-            delete s;//delete object
+            s = new Student();//create an object using pointer
+            cin >> *s;//use pointer to read object
+            s->storefile();//call function using pointer
+            delete s;//delete object using pointer
             break;
         case 2:
             sortcontent();//sort content
