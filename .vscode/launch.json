@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Tarun/Desktop/oopslab/practice/inhertitanceoffiles",
-      "program": "c:/Users/Tarun/Desktop/oopslab/practice/inhertitanceoffiles/build/Debug/outDebug",
+      "cwd": "c:/Users/Tarun/Desktop/oopslab/string",
+      "program": "c:/Users/Tarun/Desktop/oopslab/string/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
